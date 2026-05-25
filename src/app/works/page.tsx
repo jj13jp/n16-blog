@@ -11,7 +11,7 @@ const works: Work[] = [
     title: "n16-blog",
     description: "Next.js 16 と Tailwind CSS 4 で構築した個人ブログ。MicroCMS と連携予定。",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MicroCMS"],
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/Joex13/n16-blog",
   },
   {
     title: "Sample Project",
