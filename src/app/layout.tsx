@@ -1,15 +1,11 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { M_PLUS_2 } from "next/font/google"
 import { ParticleBackground } from "@/shared/ParticleBackground"
 import "@/app/globals.css"
 
-const geistSans = Geist({
+const mPlus2 = M_PLUS_2({
+  weight: "400",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 })
 
@@ -24,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="ja" className={`${mPlus2.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <main>{children}</main>
         <ParticleBackground />
