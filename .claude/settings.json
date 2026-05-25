@@ -1,0 +1,27 @@
+{
+  "enabledMcpjsonServers": ["context7"],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx biome check --write \"${file}\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "The user is about to edit or write to a file. Check if the file path matches .env* (environment variables file). If it does, ask for confirmation before proceeding. Is this edit safe to proceed with?"
+          }
+        ]
+      }
+    ]
+  }
+}
