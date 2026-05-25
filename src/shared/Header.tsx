@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="w-full border-b border-zinc-200 dark:border-zinc-800">
-      <nav className="mx-auto flex max-w-3xl items-center gap-6 px-4 py-3">
+      <nav className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
         {links.map(({ href, label }) => {
           const isActive = pathname === href
           return (
