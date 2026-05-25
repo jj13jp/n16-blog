@@ -1,5 +1,15 @@
 export default function AboutPage() {
-  const skills = ["TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js"]
+  const skills = [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "Node.js",
+    "Emotion",
+    "Vue.js",
+    "Claude Code（修行中）",
+    "LocalLLM（RTX5090）",
+  ]
 
   return (
     <div className="flex flex-col gap-8">
