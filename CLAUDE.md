@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # Claude Code Configuration for n16-blog
 
 This guide helps Claude Code assistants work effectively with the n16-blog Next.js project.
