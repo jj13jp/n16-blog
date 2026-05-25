@@ -1,15 +1,12 @@
 "use client"
 
 import { useActionState } from "react"
-import { sendContact, type ContactActionResult } from "@/app/contact/actions"
+import { type ContactActionResult, sendContact } from "@/app/contact/actions"
 
 type State = ContactActionResult | null
 
 export function ContactForm() {
-  const [state, formAction, isPending] = useActionState<State, FormData>(
-    sendContact,
-    null,
-  )
+  const [state, formAction, isPending] = useActionState<State, FormData>(sendContact, null)
 
   if (state?.success) {
     return (

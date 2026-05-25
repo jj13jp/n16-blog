@@ -1,10 +1,9 @@
 "use client"
 
-import { useCallback } from "react"
-import { NextParticlesProvider, NextParticles } from "@tsparticles/nextjs"
-import type { Engine } from "@tsparticles/engine"
-import type { ISourceOptions } from "@tsparticles/engine"
+import type { Engine, ISourceOptions } from "@tsparticles/engine"
+import { NextParticles, NextParticlesProvider } from "@tsparticles/nextjs"
 import { loadSlim } from "@tsparticles/slim"
+import { useCallback } from "react"
 import particleConfigData from "@/shared/config/particleConfig.json"
 
 export function ParticleBackground() {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { M_PLUS_2 } from "next/font/google"
-import { ParticleBackground } from "@/shared/ParticleBackground"
 import { NavBar } from "@/shared/NavBar"
+import { ParticleBackground } from "@/shared/ParticleBackground"
 import "@/app/globals.css"
 
 const mPlus2 = M_PLUS_2({
