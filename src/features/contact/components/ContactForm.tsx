@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState } from "react"
-import { type ContactActionResult, sendContact } from "@/features/contact/actions"
+import { type ContactActionResult, sendContact } from "@/features/contact/actions/serverActions"
 
 type State = ContactActionResult | null
 

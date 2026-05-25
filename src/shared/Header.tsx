@@ -24,8 +24,8 @@ export default function Header() {
               href={href}
               className={
                 isActive
-                  ? "font-semibold text-zinc-900 dark:text-zinc-100"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  ? "font-semibold text-zinc-900 dark:text-red-400"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-red-400"
               }
             >
               {label}
