@@ -11,7 +11,10 @@ const schema = z.object({
 
 export type ContactActionResult = { success: true } | { success: false; message: string }
 
-export async function sendContact(formData: FormData): Promise<ContactActionResult> {
+export async function sendContact(
+  _state: ContactActionResult | null,
+  formData: FormData,
+): Promise<ContactActionResult> {
   const parsed = schema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),

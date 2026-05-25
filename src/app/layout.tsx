@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { M_PLUS_2 } from "next/font/google"
-import { NavBar } from "@/shared/NavBar"
+import Header from "@/shared/Header"
 import { ParticleBackground } from "@/shared/ParticleBackground"
 import "@/app/globals.css"
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${mPlus2.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <NavBar />
+        <Header />
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
         <ParticleBackground />
       </body>

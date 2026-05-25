@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export function NavBar() {
+export default function Header() {
   return (
     <header className="w-full border-b border-zinc-200 dark:border-zinc-800">
       <nav className="mx-auto flex max-w-3xl items-center gap-6 px-4 py-3">

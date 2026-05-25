@@ -6,8 +6,7 @@ export default function AboutPage() {
       <section className="flex flex-col gap-3">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">About</h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          こんにちは。フロントエンドエンジニアとして日々開発に取り組んでいます。
-          このブログでは技術的な知見や日常のことを書いていきます。
+          こんにちは。フロントエンドエンジニアとして日々開発に取り組んでいます。日常のことを書いていきます。※たまに技術的なことも書こうかな。
         </p>
       </section>
 
@@ -30,7 +29,7 @@ export default function AboutPage() {
         <ul className="flex gap-4">
           <li>
             <a
-              href="https://github.com"
+              href="https://github.com/Joex13"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-600 underline hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
