@@ -1,7 +1,7 @@
 "use server"
 
 import { Resend } from "resend"
-import { contactSchema } from "@/features/contact/schema"
+import { contactSchema } from "@/features/contact/types/schema"
 
 export type ContactActionResult = { success: true } | { success: false; message: string }
 

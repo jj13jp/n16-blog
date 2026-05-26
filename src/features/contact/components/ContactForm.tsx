@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { sendContact } from "@/features/contact/actions/serverActions"
-import { type ContactFormData, contactSchema } from "@/features/contact/schema"
+import { type ContactFormData, contactSchema } from "@/features/contact/types/schema"
 
 export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false)
