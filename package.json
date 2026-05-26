@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@tsparticles/engine": "^4.0.5",
     "@tsparticles/nextjs": "^4.0.5",
     "@tsparticles/react": "^4.0.5",
