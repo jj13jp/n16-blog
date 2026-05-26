@@ -1,14 +1,34 @@
 "use client"
 
-import { useActionState } from "react"
-import { type ContactActionResult, sendContact } from "@/features/contact/actions/serverActions"
-
-type State = ContactActionResult | null
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { sendContact } from "@/features/contact/actions/serverActions"
+import { type ContactFormData, contactSchema } from "@/features/contact/schema"
 
 export function ContactForm() {
-  const [state, formAction, isPending] = useActionState<State, FormData>(sendContact, null)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
 
-  if (state?.success) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  })
+
+  const onSubmit = async (data: ContactFormData) => {
+    setServerError(null)
+    const result = await sendContact(data)
+    if (result.success) {
+      setIsSuccess(true)
+    } else {
+      setServerError(result.message)
+    }
+  }
+
+  if (isSuccess) {
     return (
       <p className="rounded-lg bg-green-50 p-4 text-green-800 dark:bg-green-950 dark:text-green-200">
         お問い合わせを受け付けました。ありがとうございます。
@@ -17,11 +37,9 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
-      {state && !state.success && (
-        <p className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">
-          {state.message}
-        </p>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      {serverError && (
+        <p className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">{serverError}</p>
       )}
 
       <div className="flex flex-col gap-1">
@@ -30,11 +48,11 @@ export function ContactForm() {
         </label>
         <input
           id="name"
-          name="name"
           type="text"
-          required
+          {...register("name")}
           className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
         />
+        {errors.name && <span className="text-sm text-red-600 dark:text-red-400">{errors.name.message}</span>}
       </div>
 
       <div className="flex flex-col gap-1">
@@ -43,11 +61,11 @@ export function ContactForm() {
         </label>
         <input
           id="email"
-          name="email"
           type="email"
-          required
+          {...register("email")}
           className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
         />
+        {errors.email && <span className="text-sm text-red-600 dark:text-red-400">{errors.email.message}</span>}
       </div>
 
       <div className="flex flex-col gap-1">
@@ -56,19 +74,19 @@ export function ContactForm() {
         </label>
         <textarea
           id="message"
-          name="message"
           rows={5}
-          required
+          {...register("message")}
           className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
         />
+        {errors.message && <span className="text-sm text-red-600 dark:text-red-400">{errors.message.message}</span>}
       </div>
 
       <button
         type="submit"
-        disabled={isPending}
+        disabled={isSubmitting}
         className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
       >
-        {isPending ? "送信中..." : "送信する"}
+        {isSubmitting ? "送信中..." : "送信する"}
       </button>
     </form>
   )

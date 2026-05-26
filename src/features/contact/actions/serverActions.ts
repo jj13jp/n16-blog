@@ -1,25 +1,16 @@
 "use server"
 
 import { Resend } from "resend"
-import { z } from "zod"
-
-const schema = z.object({
-  name: z.string().min(1, "名前を入力してください"),
-  email: z.email("有効なメールアドレスを入力してください"),
-  message: z.string().min(10, "メッセージは10文字以上で入力してください"),
-})
+import { contactSchema } from "@/features/contact/schema"
 
 export type ContactActionResult = { success: true } | { success: false; message: string }
 
-export async function sendContact(
-  _state: ContactActionResult | null,
-  formData: FormData,
-): Promise<ContactActionResult> {
-  const parsed = schema.safeParse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  })
+export async function sendContact(data: {
+  name: string
+  email: string
+  message: string
+}): Promise<ContactActionResult> {
+  const parsed = contactSchema.safeParse(data)
 
   if (!parsed.success) {
     return { success: false, message: parsed.error.issues[0].message }
