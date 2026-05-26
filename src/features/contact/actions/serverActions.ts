@@ -1,15 +1,12 @@
 "use server"
 
 import { Resend } from "resend"
+import type { ContactFormData } from "@/features/contact/types/schema"
 import { contactSchema } from "@/features/contact/types/schema"
 
 export type ContactActionResult = { success: true } | { success: false; message: string }
 
-export async function sendContact(data: {
-  name: string
-  email: string
-  message: string
-}): Promise<ContactActionResult> {
+export async function sendContact(data: ContactFormData): Promise<ContactActionResult> {
   const parsed = contactSchema.safeParse(data)
 
   if (!parsed.success) {
