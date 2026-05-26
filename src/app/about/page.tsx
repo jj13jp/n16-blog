@@ -5,10 +5,10 @@ export default function AboutPage() {
     "Next.js",
     "Tailwind CSS",
     "Node.js",
-    "Emotion",
     "Vue.js",
-    "Claude Code（修行中）",
-    "LocalLLM（RTX5090）",
+    "Claude",
+    "llama.cpp",
+    "LM Studio",
   ]
 
   return (
