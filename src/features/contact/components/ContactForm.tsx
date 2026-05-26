@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { sendContact } from "@/features/contact/actions/serverActions"
 import { type ContactFormData, contactSchema } from "@/features/contact/types/schema"
+import { Button } from "@/shared/Button"
 import { TextArea } from "@/shared/TextArea"
 import { TextInput } from "@/shared/TextInput"
 
@@ -50,13 +51,9 @@ export function ContactForm() {
 
       <TextArea id="message" rows={5} label="メッセージ" error={errors.message?.message} {...register("message")} />
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
-      >
+      <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "送信中..." : "送信する"}
-      </button>
+      </Button>
     </form>
   )
 }
