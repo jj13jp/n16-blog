@@ -5,6 +5,8 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { sendContact } from "@/features/contact/actions/serverActions"
 import { type ContactFormData, contactSchema } from "@/features/contact/types/schema"
+import { TextArea } from "@/shared/TextArea"
+import { TextInput } from "@/shared/TextInput"
 
 export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -42,44 +44,11 @@ export function ContactForm() {
         <p className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">{serverError}</p>
       )}
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          お名前
-        </label>
-        <input
-          id="name"
-          type="text"
-          {...register("name")}
-          className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
-        />
-        {errors.name && <span className="text-sm text-red-600 dark:text-red-400">{errors.name.message}</span>}
-      </div>
+      <TextInput id="name" type="text" label="お名前" error={errors.name?.message} {...register("name")} />
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          メールアドレス
-        </label>
-        <input
-          id="email"
-          type="email"
-          {...register("email")}
-          className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
-        />
-        {errors.email && <span className="text-sm text-red-600 dark:text-red-400">{errors.email.message}</span>}
-      </div>
+      <TextInput id="email" type="email" label="メールアドレス" error={errors.email?.message} {...register("email")} />
 
-      <div className="flex flex-col gap-1">
-        <label htmlFor="message" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          メッセージ
-        </label>
-        <textarea
-          id="message"
-          rows={5}
-          {...register("message")}
-          className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-black/50 dark:text-zinc-100"
-        />
-        {errors.message && <span className="text-sm text-red-600 dark:text-red-400">{errors.message.message}</span>}
-      </div>
+      <TextArea id="message" rows={5} label="メッセージ" error={errors.message?.message} {...register("message")} />
 
       <button
         type="submit"
