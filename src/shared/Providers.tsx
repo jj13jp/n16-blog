@@ -3,10 +3,10 @@
 import type { Engine, ISourceOptions } from "@tsparticles/engine"
 import { NextParticles, NextParticlesProvider } from "@tsparticles/nextjs"
 import { loadSlim } from "@tsparticles/slim"
-import { useCallback } from "react"
+import { type ReactNode, useCallback } from "react"
 import particleConfigData from "@/shared/config/particleConfig.json"
 
-export function ParticleBackground() {
+export function Providers({ children }: { children: ReactNode }) {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine)
   }, [])
@@ -15,6 +15,7 @@ export function ParticleBackground() {
 
   return (
     <NextParticlesProvider init={particlesInit}>
+      {children}
       <NextParticles id="tsparticles" options={options} className="-z-10" />
     </NextParticlesProvider>
   )

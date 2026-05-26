@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { M_PLUS_2 } from "next/font/google"
 import Header from "@/shared/Header"
-import { ParticleBackground } from "@/shared/ParticleBackground"
+import { Providers } from "@/shared/Providers"
 import "@/app/globals.css"
 
 const mPlus2 = M_PLUS_2({
@@ -23,9 +23,10 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${mPlus2.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
-        <ParticleBackground />
+        <Providers>
+          <Header />
+          <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
+        </Providers>
       </body>
     </html>
   )
