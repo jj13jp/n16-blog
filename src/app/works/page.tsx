@@ -23,11 +23,11 @@ export default function WorksPage() {
     <div className="flex flex-col gap-8">
       <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Works</h1>
 
-      <ul className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6">
         {works.map((work) => (
           <WorkCard key={work.title} work={work} />
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
