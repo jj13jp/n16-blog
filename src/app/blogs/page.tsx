@@ -17,8 +17,8 @@ type Props = {
 
 export default async function BlogsPage({ searchParams }: Props) {
   const { order: orderParam } = await searchParams
-  const isDesc = orderParam === "desc"
-  const order: Order = isDesc ? "-updatedAt" : "updatedAt"
+  const isAsc = orderParam === "asc"
+  const order: Order = isAsc ? "updatedAt" : "-updatedAt"
 
   const { contents } = await client.getList<Blog>({
     endpoint: "blogs",
@@ -30,10 +30,10 @@ export default async function BlogsPage({ searchParams }: Props) {
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Blog</h1>
         <Link
-          href={isDesc ? "/blogs" : "/blogs?order=desc"}
+          href={isAsc ? "/blogs" : "/blogs?order=asc"}
           className="rounded-lg border border-zinc-200 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50"
         >
-          {isDesc ? "新しい順" : "古い順"}
+          {isAsc ? "古い順" : "新しい順"}
         </Link>
       </div>
 
