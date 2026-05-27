@@ -22,6 +22,8 @@
 
 # misc
 .DS_Store
+.superpowers/
+.vscode/
 *.pem
 
 # debug
