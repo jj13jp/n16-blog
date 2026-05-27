@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section className="flex flex-col gap-3">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">About</h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          こんにちは。フロントエンドエンジニアとして日々開発に取り組んでいます。日常のことを書いていきます。※たまに技術的なことも書こうかな。
+          こんにちは。フロントエンドエンジニアとして日々開発に取り組んでいます。日常のことを書いていきます。※技術的なことも書くかも？
         </p>
       </section>
 

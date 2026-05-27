@@ -4,15 +4,17 @@ import type { Work } from "@/features/works/types"
 const works: Work[] = [
   {
     title: "n16-blog",
-    description: "Next.js 16 と Tailwind CSS 4 で構築した個人ブログ。MicroCMS と連携予定。",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MicroCMS"],
+    description:
+      "Next.js 16 と Tailwind CSS 4 で構築した個人ブログ。MicroCMS と連携しており、簡単にブログ記事を追加することができる。feature-basedデザインを使っていることも特徴。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MicroCMS", "resend", "zod", "React-Hook-Form", "Claude Code"],
     githubUrl: "https://github.com/Joex13/n16-blog",
   },
   {
-    title: "Sample Project",
-    description: "サンプルプロジェクトの説明をここに書きます。",
-    techStack: ["React", "Node.js"],
-    githubUrl: "https://github.com",
+    title: "n15-blog",
+    description:
+      "Next.js 15 と Tailwind CSS で構築した個人ブログ。MicroCMS と連携しており、簡単にブログ記事を追加することができる。",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "MicroCMS", "Nodemailer"],
+    githubUrl: "https://github.com/Joex13/n15-blog",
   },
 ]
 
