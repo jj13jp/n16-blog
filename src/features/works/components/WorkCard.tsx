@@ -1,20 +1,13 @@
 import type { Work } from "@/features/works/types"
-import { ListItems } from "@/shared/ListItems"
+import { Card } from "@/shared/Card"
 
 interface Props {
   work: Work
 }
 
 export function WorkCard({ work }: Props) {
-  return (
-    <li className="flex flex-col gap-3 rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
-      <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">{work.title}</h2>
-      <p className="text-zinc-600 dark:text-zinc-400">{work.description}</p>
-      <ul className="flex flex-wrap gap-2">
-        {work.techStack.map((tech) => (
-          <ListItems key={tech} label={tech} className="text-xs" />
-        ))}
-      </ul>
+  const actions =
+    work.githubUrl || work.demoUrl ? (
       <div className="flex gap-4">
         {work.githubUrl && (
           <a
@@ -37,6 +30,7 @@ export function WorkCard({ work }: Props) {
           </a>
         )}
       </div>
-    </li>
-  )
+    ) : undefined
+
+  return <Card title={work.title} tags={work.techStack} excerpt={work.description} actions={actions} />
 }

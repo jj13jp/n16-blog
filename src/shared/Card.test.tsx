@@ -19,9 +19,31 @@ describe("Card", () => {
     expect(link).toHaveAttribute("href", "/posts/test")
   })
 
+  it("href がないとき タイトルをリンクにしない", () => {
+    render(<Card {...baseProps} href={undefined} />)
+    expect(screen.queryByRole("link", { name: "テスト記事タイトル" })).not.toBeInTheDocument()
+    expect(screen.getByText("テスト記事タイトル")).toBeInTheDocument()
+  })
+
   it("投稿日を表示する", () => {
     render(<Card {...baseProps} />)
     expect(screen.getByText("2026-05-27")).toBeInTheDocument()
+  })
+
+  it("publishedAt のみのとき日付を表示する", () => {
+    render(<Card {...baseProps} readingTime={undefined} />)
+    expect(screen.getByText("2026-05-27")).toBeInTheDocument()
+  })
+
+  it("readingTime のみのとき読了時間を表示する", () => {
+    render(<Card {...baseProps} publishedAt={undefined} />)
+    expect(screen.getByText("3 分で読めます")).toBeInTheDocument()
+  })
+
+  it("publishedAt も readingTime もないときメタ行を表示しない", () => {
+    render(<Card {...baseProps} publishedAt={undefined} readingTime={undefined} />)
+    expect(screen.queryByText("分で読めます")).not.toBeInTheDocument()
+    expect(screen.queryByRole("time")).not.toBeInTheDocument()
   })
 
   it("タグをすべて表示する", () => {
@@ -51,13 +73,14 @@ describe("Card", () => {
     expect(img).toHaveAttribute("src")
   })
 
-  it("orientation のデフォルトは horizontal", () => {
-    const { container } = render(<Card {...baseProps} />)
-    expect(container.firstChild).toHaveClass("flex-row")
+  it("actions を表示する", () => {
+    render(<Card {...baseProps} actions={<a href="https://github.com">GitHub</a>} />)
+    const link = screen.getByRole("link", { name: "GitHub" })
+    expect(link).toHaveAttribute("href", "https://github.com")
   })
 
-  it("orientation=vertical のとき縦積みレイアウトになる", () => {
-    const { container } = render(<Card {...baseProps} orientation="vertical" />)
-    expect(container.firstChild).toHaveClass("flex-col")
+  it("actions が未指定のとき何も表示しない", () => {
+    render(<Card {...baseProps} />)
+    expect(screen.queryByRole("link", { name: "GitHub" })).not.toBeInTheDocument()
   })
 })
