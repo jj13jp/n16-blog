@@ -1,4 +1,5 @@
 import type { Work } from "@/features/works/types"
+import { ListItems } from "@/shared/ListItems"
 
 interface Props {
   work: Work
@@ -11,12 +12,7 @@ export function WorkCard({ work }: Props) {
       <p className="text-zinc-600 dark:text-zinc-400">{work.description}</p>
       <ul className="flex flex-wrap gap-2">
         {work.techStack.map((tech) => (
-          <li
-            key={tech}
-            className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-          >
-            {tech}
-          </li>
+          <ListItems key={tech} label={tech} className="text-xs" />
         ))}
       </ul>
       <div className="flex gap-4">
