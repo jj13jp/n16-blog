@@ -54,7 +54,7 @@ export function Card({
       </Link>
       <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
         <time dateTime={publishedAt}>{publishedAt}</time>
-        <span>·</span>
+        <span aria-hidden="true">·</span>
         <span>{readingTime} 分で読めます</span>
       </div>
       <ul className="flex flex-wrap gap-1">
