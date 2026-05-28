@@ -10,7 +10,7 @@ describe("Header", () => {
   it("ナビゲーションリンクを4つ表示する", () => {
     render(<Header />)
     expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: "About" })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Blogs" })).toBeInTheDocument()
     expect(screen.getByRole("link", { name: "Works" })).toBeInTheDocument()
     expect(screen.getByRole("link", { name: "Contact" })).toBeInTheDocument()
   })
@@ -22,6 +22,6 @@ describe("Header", () => {
 
   it("現在のパス以外のリンクにアクティブスタイルが適用されない", () => {
     render(<Header />)
-    expect(screen.getByRole("link", { name: "About" })).not.toHaveClass("font-semibold")
+    expect(screen.getByRole("link", { name: "Blogs" })).not.toHaveClass("font-semibold")
   })
 })
