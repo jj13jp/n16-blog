@@ -67,4 +67,15 @@ describe("WorkCard", () => {
     )
     expect(screen.getByRole("link", { name: "Demo" })).toHaveAttribute("href", "https://example.com")
   })
+
+  it("githubUrl も demoUrl もないときリンクを表示しない", () => {
+    const workNoLinks: Work = { title: "No Links", description: "説明", techStack: [] }
+    render(
+      <ul>
+        <WorkCard work={workNoLinks} />
+      </ul>,
+    )
+    expect(screen.queryByRole("link", { name: "GitHub" })).not.toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: "Demo" })).not.toBeInTheDocument()
+  })
 })

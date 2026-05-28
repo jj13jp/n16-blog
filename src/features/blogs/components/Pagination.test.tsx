@@ -62,4 +62,10 @@ describe("Pagination", () => {
     expect(prev).toHaveAttribute("href", "/blogs?page=2")
     expect(prev).toHaveAttribute("aria-disabled", "false")
   })
+
+  it("ellipsis が表示されるとき … スパンを含む", () => {
+    render(<Pagination currentPage={5} totalPages={10} buildHref={buildHref} />)
+    const ellipses = screen.getAllByText("…")
+    expect(ellipses.length).toBeGreaterThanOrEqual(1)
+  })
 })
