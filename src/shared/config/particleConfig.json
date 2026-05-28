@@ -1,9 +1,17 @@
 {
   "key": "basic",
   "name": "Basic",
+  "fpsLimit": 60,
+  "motion": {
+    "disable": false,
+    "reduce": {
+      "factor": 4,
+      "value": true
+    }
+  },
   "particles": {
     "number": {
-      "value": 200,
+      "value": 100,
       "density": {
         "enable": true
       }
@@ -42,7 +50,7 @@
     },
     "move": {
       "enable": true,
-      "speed": 6
+      "speed": 2
     }
   },
   "interactivity": {
