@@ -1,9 +1,11 @@
+import type Image from "next/image"
+import type { ComponentProps } from "react"
 import type { Work } from "@/features/works/types"
 import { Card } from "@/shared/Card"
 
 interface Props {
   work: Work
-  loading?: "lazy" | "eager"
+  loading?: ComponentProps<typeof Image>["loading"]
 }
 
 export function WorkCard({ work, loading }: Props) {

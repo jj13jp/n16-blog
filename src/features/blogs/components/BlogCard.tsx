@@ -1,9 +1,11 @@
+import type Image from "next/image"
+import type { ComponentProps } from "react"
 import type { BlogListItem } from "@/features/blogs/types"
 import { Card } from "@/shared/Card"
 
 interface Props {
   blog: BlogListItem
-  loading?: "lazy" | "eager"
+  loading?: ComponentProps<typeof Image>["loading"]
 }
 
 function stripHtml(html: string): string {
