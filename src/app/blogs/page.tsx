@@ -3,6 +3,7 @@ import Link from "next/link"
 import { BlogCard } from "@/features/blogs/components/BlogCard"
 import { Pagination } from "@/features/blogs/components/Pagination"
 import type { Blog } from "@/features/blogs/types"
+import { buildHref } from "@/features/blogs/utils/buildHref"
 import { client } from "@/libs/microcms"
 
 export const metadata: Metadata = {
@@ -35,14 +36,6 @@ export default async function BlogsPage({ searchParams }: Props) {
 
   const totalPages = Math.ceil(totalCount / PER_PAGE)
 
-  const buildHref = (page: number) => {
-    const params = new URLSearchParams()
-    if (isAsc) params.set("order", "asc")
-    if (page > 1) params.set("page", String(page))
-    const qs = params.toString()
-    return qs ? `/blogs?${qs}` : "/blogs"
-  }
-
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
@@ -67,7 +60,7 @@ export default async function BlogsPage({ searchParams }: Props) {
         </ul>
       )}
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} buildHref={buildHref} />
+      <Pagination currentPage={currentPage} totalPages={totalPages} buildHref={(page) => buildHref(page, isAsc)} />
     </div>
   )
 }
