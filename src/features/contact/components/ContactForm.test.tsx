@@ -39,7 +39,7 @@ describe("ContactForm", () => {
   })
 
   it("送信成功時に完了メッセージを表示する", async () => {
-    mockSendContact.mockResolvedValueOnce({ success: true, message: "" })
+    mockSendContact.mockResolvedValueOnce({ success: true })
     render(<ContactForm />)
     await userEvent.type(screen.getByLabelText("お名前"), "テスト太郎")
     await userEvent.type(screen.getByLabelText("メールアドレス"), "test@example.com")

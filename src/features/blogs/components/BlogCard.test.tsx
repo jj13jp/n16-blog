@@ -66,4 +66,17 @@ describe("BlogCard", () => {
     render(<BlogCard blog={baseBlog} />)
     expect(screen.getByRole("img", { name: "サムネイルなし" })).toBeInTheDocument()
   })
+
+  it("eyecatch が指定されたとき img を表示する", () => {
+    const blogWithEyecatch: BlogListItem = {
+      ...baseBlog,
+      eyecatch: {
+        url: "https://example.com/image.jpg",
+        height: 600,
+        width: 800,
+      },
+    }
+    render(<BlogCard blog={blogWithEyecatch} />)
+    expect(screen.getByRole("img", { name: "テストブログ記事" })).toBeInTheDocument()
+  })
 })

@@ -83,4 +83,9 @@ describe("Card", () => {
     render(<Card {...baseProps} />)
     expect(screen.queryByRole("link", { name: "GitHub" })).not.toBeInTheDocument()
   })
+
+  it("tags が空配列のときタグ一覧を表示しない", () => {
+    render(<Card {...baseProps} tags={[]} />)
+    expect(screen.queryByRole("list")).not.toBeInTheDocument()
+  })
 })
