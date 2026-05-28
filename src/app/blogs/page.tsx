@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BlogCard } from "@/features/blogs/components/BlogCard"
+import { Pagination } from "@/features/blogs/components/Pagination"
 import type { Blog } from "@/features/blogs/types"
 import { client } from "@/libs/microcms"
 
@@ -9,21 +10,38 @@ export const metadata: Metadata = {
   description: "ブログ記事一覧",
 }
 
+const PER_PAGE = 10
+
 type Order = "updatedAt" | "-updatedAt"
 
 type Props = {
-  searchParams: Promise<{ order?: string }>
+  searchParams: Promise<{ order?: string; page?: string }>
 }
 
 export default async function BlogsPage({ searchParams }: Props) {
-  const { order: orderParam } = await searchParams
+  const { order: orderParam, page: pageParam } = await searchParams
   const isAsc = orderParam === "asc"
   const order: Order = isAsc ? "updatedAt" : "-updatedAt"
+  const currentPage = Math.max(1, Number(pageParam) || 1)
 
-  const { contents } = await client.getList<Blog>({
+  const { contents, totalCount } = await client.getList<Blog>({
     endpoint: "blogs",
-    queries: { orders: order, limit: 100 },
+    queries: {
+      orders: order,
+      limit: PER_PAGE,
+      offset: (currentPage - 1) * PER_PAGE,
+    },
   })
+
+  const totalPages = Math.ceil(totalCount / PER_PAGE)
+
+  const buildHref = (page: number) => {
+    const params = new URLSearchParams()
+    if (isAsc) params.set("order", "asc")
+    if (page > 1) params.set("page", String(page))
+    const qs = params.toString()
+    return qs ? `/blogs?${qs}` : "/blogs"
+  }
 
   return (
     <div className="flex flex-col gap-8">
@@ -48,6 +66,8 @@ export default async function BlogsPage({ searchParams }: Props) {
           ))}
         </ul>
       )}
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} buildHref={buildHref} />
     </div>
   )
 }
