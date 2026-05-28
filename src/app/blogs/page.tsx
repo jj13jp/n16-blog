@@ -41,7 +41,7 @@ export default async function BlogsPage({ searchParams }: Props) {
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Blog</h1>
         <Link
-          href={isAsc ? "/blogs" : "/blogs?order=asc"}
+          href={buildHref(1, !isAsc)}
           className="rounded-lg border border-zinc-200 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50"
         >
           {isAsc ? "古い順" : "新しい順"}
