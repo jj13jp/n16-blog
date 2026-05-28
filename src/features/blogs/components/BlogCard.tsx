@@ -3,6 +3,7 @@ import { Card } from "@/shared/Card"
 
 interface Props {
   blog: BlogListItem
+  loading?: "lazy" | "eager"
 }
 
 function stripHtml(html: string): string {
@@ -13,7 +14,7 @@ function calcReadingTime(html: string): number {
   return Math.max(1, Math.ceil(stripHtml(html).length / 400))
 }
 
-export function BlogCard({ blog }: Props) {
+export function BlogCard({ blog, loading }: Props) {
   const updatedAt = new Date(blog.updatedAt).toLocaleDateString("ja-JP", {
     year: "numeric",
     month: "long",
@@ -31,6 +32,7 @@ export function BlogCard({ blog }: Props) {
       readingTime={calcReadingTime(blog.content)}
       href={`/blogs/${blog.id}`}
       excerpt={excerpt}
+      loading={loading}
     />
   )
 }

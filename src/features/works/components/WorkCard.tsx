@@ -3,9 +3,10 @@ import { Card } from "@/shared/Card"
 
 interface Props {
   work: Work
+  loading?: "lazy" | "eager"
 }
 
-export function WorkCard({ work }: Props) {
+export function WorkCard({ work, loading }: Props) {
   const actions =
     work.githubUrl || work.demoUrl ? (
       <div className="flex gap-4">
@@ -32,5 +33,7 @@ export function WorkCard({ work }: Props) {
       </div>
     ) : undefined
 
-  return <Card title={work.title} tags={work.techStack} excerpt={work.description} actions={actions} />
+  return (
+    <Card title={work.title} tags={work.techStack} excerpt={work.description} actions={actions} loading={loading} />
+  )
 }

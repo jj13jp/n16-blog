@@ -12,9 +12,10 @@ interface Props {
   readingTime?: number
   href?: string
   actions?: ReactNode
+  loading?: "lazy" | "eager"
 }
 
-export function Card({ title, thumbnail, publishedAt, tags, excerpt, readingTime, href, actions }: Props) {
+export function Card({ title, thumbnail, publishedAt, tags, excerpt, readingTime, href, actions, loading }: Props) {
   const thumbnailArea = (
     <div className="relative h-48 w-full overflow-hidden rounded-lg sm:h-32 sm:w-36 sm:shrink-0 sm:self-stretch md:h-40 md:w-48">
       {thumbnail ? (
@@ -24,6 +25,7 @@ export function Card({ title, thumbnail, publishedAt, tags, excerpt, readingTime
           fill
           className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 144px, 192px"
+          loading={loading}
         />
       ) : (
         <div

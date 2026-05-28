@@ -69,6 +69,7 @@ export default async function BlogDetailPage({ params }: Props) {
               alt={blog.eyecatch.alt ?? blog.title}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) calc(100vw - 2rem), 768px"
               priority
             />
           </div>
