@@ -6,7 +6,7 @@ interface Props {
   buildHref: (page: number) => string
 }
 
-function pageNumbers(current: number, total: number): (number | "...")[] {
+export function pageNumbers(current: number, total: number): (number | "...")[] {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1)
 
   const pages: (number | "...")[] = [1]
