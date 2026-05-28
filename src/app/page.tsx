@@ -1,3 +1,4 @@
+import { RecentPosts } from "@/features/blogs/components/RecentPosts"
 import { ListItems } from "@/shared/ListItems"
 
 export default function AboutPage() {
@@ -23,6 +24,8 @@ export default function AboutPage() {
           こんにちは。フロントエンドエンジニアとして日々開発に取り組んでいます。日常のことを書いていきます。※技術的なことも書くかも？
         </p>
       </section>
+
+      <RecentPosts />
 
       <section className="flex flex-col gap-3">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Skills</h2>
