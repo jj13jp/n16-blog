@@ -41,9 +41,9 @@ export default async function BlogsPage({ searchParams }: Props) {
         <p className="text-zinc-500 dark:text-zinc-400">記事がありません。</p>
       ) : (
         <ul className="flex flex-col gap-4">
-          {contents.map((blog) => (
+          {contents.map((blog, index) => (
             <li key={blog.id}>
-              <BlogCard blog={blog} />
+              <BlogCard blog={blog} loading={index < 5 ? "eager" : "lazy"} />
             </li>
           ))}
         </ul>

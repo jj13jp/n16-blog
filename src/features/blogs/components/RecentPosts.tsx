@@ -25,7 +25,7 @@ export async function RecentPosts() {
       <ul className="flex flex-col gap-4">
         {contents.map((blog) => (
           <li key={blog.id}>
-            <BlogCard blog={blog} />
+            <BlogCard blog={blog} loading="eager" />
           </li>
         ))}
       </ul>
