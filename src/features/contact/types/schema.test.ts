@@ -30,7 +30,7 @@ describe("contactSchema", () => {
   })
 
   it("message が 9 文字以下のときエラーメッセージを返す", () => {
-    const result = contactSchema.safeParse({ ...valid, message: "短すぎる" })
+    const result = contactSchema.safeParse({ ...valid, message: "123456789" })
     expect(result.success).toBe(false)
     if (!result.success) {
       expect(result.error.issues[0].message).toBe("メッセージは10文字以上で入力してください")
