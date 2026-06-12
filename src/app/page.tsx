@@ -9,11 +9,16 @@ export default function AboutPage() {
     "Vue.js",
     "Node.js",
     "Tailwind CSS",
-    "Java（少々）",
+    "Java",
     "Spring Boot",
+    "Python",
+    "Docker",
+    "Docker Compose",
     "Claude",
     "llama.cpp",
     "LM Studio",
+    "WSL2",
+    "mise"
   ]
 
   return (
