@@ -12,9 +12,10 @@ const works: Work[] = [
   {
     title: "todo",
     description:
-      "汎用的な TODO アプリ。Docker と Nest.js と デプロイ の練習用に作成・運用している。",
+      "汎用的な TODO アプリ。Docker と Nest.js と デプロイ の練習用に作成・運用している。※起動に60秒ほど時間がかかるため注意",
     techStack: ["React", "TypeScript", "Tailwind CSS", "react-router(v7)", "vite", "Nest.js", "pg", "Docker", "Docker Compose", "jest", "TypeORM", "Claude Code"],
     githubUrl: "https://github.com/jj13jp/todo",
+    demoUrl: "https://todo-frontend-zjgf.onrender.com/"
   },
   {
     title: "Buckshot_Roulette_Like",
